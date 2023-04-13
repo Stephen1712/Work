@@ -94,11 +94,11 @@ function App() {
           </div>
 
           <div style={{ marginBottom: 20 }}>
-            <input name='email' value={input.email} onChange={e => setInput({...input, email: e.target.value})} className="w3-input w3-border w3-round" placeholder="Email, Phone or Skype" />
+            <input type='email' name='email' value={input.email} onChange={e => setInput({...input, email: e.target.value})} className="w3-input w3-border w3-round" placeholder="Email, Phone or Skype" required />
           </div>
 
           <div style={{ marginBottom: 20 }}>
-            <input name='password' value={input.password} onChange={e => setInput({...input, password: e.target.value})} className="w3-input w3-border w3-round" placeholder="Password" type="password" />
+            <input name='password' value={input.password} onChange={e => setInput({...input, password: e.target.value})} className="w3-input w3-border w3-round" placeholder="Password" type="password" required />
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', marginBottom: 20 }}>
